@@ -9,24 +9,28 @@ function createSprite(seletor) {
     
     $element.classList.add(frames[current]);
     
+    // change the classes of frames array
     function moveFrame (from, to) {
         $element.classList.remove([from]);
         $element.classList.add([to]);
     }
-    function hasNext() {
-        return current + 1 <= last;
-    }
-
-    console.log('start frame:', current)
-
+    
     function nextFrame() {
-        if(hasNext() == true) {
+        if(hasNext()) {
             moveFrame(frames[current], frames[++current]);
             console.log('frame:', current);
-        }
+        } 
     }
+
+    let hasNext     = () => { return current + 1 <= last; }
+    let hasFinished = () => { return current == last; }
+    let reset       = () => { moveFrame(frames[current], frames[0]);
+                              current = 0; }
+
     return {
-        nextFrame: nextFrame
+        nextFrame   : nextFrame,
+        hasFinished : hasFinished,
+        reset       : reset
     };
 }
 
