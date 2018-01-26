@@ -1,21 +1,21 @@
-function createSprite(seletor) {
+let createSprite = (seletor) => {
 
-    var $element = document.querySelector(seletor);
+    let $element = document.querySelector(seletor);
 
-    var frames = ['frame1', 'frame2', 'frame3', 'frame4', 'frame5', 'frame6', 'frame7', 'frame8', 'frame9'];
+    let frames = ['frame1', 'frame2', 'frame3', 'frame4', 'frame5', 'frame6', 'frame7', 'frame8', 'frame9'];
     
-    var current = 0;
-    var last = frames.length - 1; 
+    let current = 0;
+    let last = frames.length - 1; 
     
     $element.classList.add(frames[current]);
     
     // change the classes of frames array
-    function moveFrame (from, to) {
+    let moveFrame = (from, to) => {
         $element.classList.remove([from]);
         $element.classList.add([to]);
     }
     
-    function nextFrame() {
+    let nextFrame = () => {
         if(hasNext()) {
             moveFrame(frames[current], frames[++current]);
             console.log('frame:', current);
